@@ -11,13 +11,9 @@ import {
   Text,
   View
 } from 'react-native';
+import NamedSwitch from './src/components/namedSwitch';
 
 export default class HomeDashboard extends Component {
-  state = {
-    trueSwitchIsOn: true,
-    falseSwitchIsOn: false,
-  };
-
   render() {
     return (
       <View style={styles.container}>
@@ -31,6 +27,8 @@ export default class HomeDashboard extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
+        <NamedSwitch name='Family Room' />
+        <NamedSwitch name='Living Room' />
       </View>
     );
   }
