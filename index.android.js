@@ -33,6 +33,7 @@ export default class HomeDashboard extends Component {
         <NamedSwitch name='Dining Room Lamp' plugId={3} />
         <NamedSwitch name='Cabinet' plugId={4} />
         <NamedSwitch name='Bedroom Lamp' plugId={5} />
+        <NamedSwitch name='Dining Room Table' plugId={0} type='wemo' />
       </View>
     );
   }

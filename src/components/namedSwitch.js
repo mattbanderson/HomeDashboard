@@ -7,7 +7,12 @@ export default class NamedSwitch extends Component {
     this.state = {
       on: false,
     };
-    this.endpoint = 'http://192.168.0.186:8080/api/ecoplug';
+    const baseUrl = 'http://192.168.0.186:8080/api';
+    if (this.props.type && this.props.type.toLowerCase() === 'wemo') {
+      this.endpoint = baseUrl + '/wemo';
+    } else {
+      this.endpoint = baseUrl + '/ecoplug';
+    }
   }
 
   flip() {
