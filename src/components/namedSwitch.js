@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Switch } from 'react-native';
+import { View, Text, Switch, StyleSheet } from 'react-native';
 
 export default class NamedSwitch extends Component {
   constructor(props) {
@@ -20,8 +20,6 @@ export default class NamedSwitch extends Component {
       .catch((error) => {
         console.error(error);
       });
-
-
   }
 
   componentDidMount() {
@@ -38,18 +36,34 @@ export default class NamedSwitch extends Component {
 
   render() {
     return (
-      <View>
-        <View style={{flexDirection: 'row'}}>
+      <View style={{flexDirection: 'row'}}>
+        <View style={styles.margin} />
+        <View style={styles.name}>
           <Text>
             {this.props.name}
           </Text>
+        </View>
+        <View style={styles.switchBtn}>
           <Switch
             onValueChange={value => this.flip()}
-            style={{marginBottom: 10}}
             value={this.state.on}
           />
         </View>
+        <View style={styles.margin} />
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  margin: {
+    flex: 1
+  },
+  name: {
+    flex: 4
+  },
+  switchBtn: {
+    flex: 2,
+    marginBottom: 15
+  },
+});
