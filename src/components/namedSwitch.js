@@ -7,11 +7,25 @@ export default class NamedSwitch extends Component {
     this.state = {
       on: false,
     };
+    this.endpoint = 'http://192.168.0.186:8080/api/ecoplug';
+  }
+
+  flip() {
+    const url = this.endpoint + '/' + this.props.plugId;
+    fetch(url, { method: 'POST' })
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({on: !this.state.on})
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+
   }
 
   componentDidMount() {
-    console.log("plugId: ", this.props.plugId);
-    const url = 'http://192.168.0.186:8080/api/ecoplug/' + this.props.plugId;
+    const url = this.endpoint + "/" + this.props.plugId;
     fetch(url)
       .then((response) => response.json())
       .then((responseJson) => {
@@ -30,7 +44,7 @@ export default class NamedSwitch extends Component {
             {this.props.name}
           </Text>
           <Switch
-            onValueChange={(value) => this.setState({on: value})}
+            onValueChange={value => this.flip()}
             style={{marginBottom: 10}}
             value={this.state.on}
           />
