@@ -9,6 +9,19 @@ export default class NamedSwitch extends Component {
     };
   }
 
+  componentDidMount() {
+    console.log("plugId: ", this.props.plugId);
+    const url = 'http://192.168.0.186:8080/api/ecoplug/' + this.props.plugId;
+    fetch(url)
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({on: responseJson === "ON"});
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   render() {
     return (
       <View>

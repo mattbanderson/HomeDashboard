@@ -27,8 +27,12 @@ export default class HomeDashboard extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
-        <NamedSwitch name='Family Room' />
-        <NamedSwitch name='Living Room' />
+        <NamedSwitch name='Family Room' plugId={0} />
+        <NamedSwitch name='Living Room Lamp' plugId={1} />
+        <NamedSwitch name='Family Room Lamp 2' plugId={2} />
+        <NamedSwitch name='Dining Room Lamp' plugId={3} />
+        <NamedSwitch name='Cabinet' plugId={4} />
+        <NamedSwitch name='Bedroom Lamp' plugId={5} />
       </View>
     );
   }
