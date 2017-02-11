@@ -8,10 +8,11 @@ import React, { Component } from 'react';
 import {
   AppRegistry,
   StyleSheet,
+  Navigator,
   Text,
   View
 } from 'react-native';
-import NamedSwitch from './src/components/namedSwitch';
+import SwitchCollection from './src/components/switchCollection';
 
 export default class HomeDashboard extends Component {
   render() {
@@ -27,13 +28,9 @@ export default class HomeDashboard extends Component {
           Double tap R on your keyboard to reload,{'\n'}
           Shake or press menu button for dev menu
         </Text>
-        <NamedSwitch name='Family Room' plugId={0} />
-        <NamedSwitch name='Living Room Lamp' plugId={1} />
-        <NamedSwitch name='Family Room Lamp 2' plugId={2} />
-        <NamedSwitch name='Dining Room Lamp' plugId={3} />
-        <NamedSwitch name='Cabinet' plugId={4} />
-        <NamedSwitch name='Bedroom Lamp' plugId={5} />
-        <NamedSwitch name='Dining Room Table' plugId={0} type='wemo' />
+        <View style={{flex: 1, flexDirection: 'row'}}>
+          <SwitchCollection />
+        </View>
       </View>
     );
   }
