@@ -10,13 +10,15 @@ export default class NamedSwitch extends Component {
     const baseUrl = 'http://192.168.0.186:8080/api';
     if (this.props.type && this.props.type.toLowerCase() === 'wemo') {
       this.endpoint = baseUrl + '/wemo';
+    } else if (this.props.type && this.props.type.toLowerCase() === 'garage') {
+      this.endpoint = baseUrl + '/garage/door';
     } else {
       this.endpoint = baseUrl + '/ecoplug';
     }
   }
 
   flip() {
-    const url = this.endpoint + '/' + this.props.plugId;
+    const url = this.endpoint + '/' + this.props.deviceId;
     fetch(url, { method: 'POST' })
       .then((response) => response.json())
       .then((responseJson) => {
@@ -28,7 +30,7 @@ export default class NamedSwitch extends Component {
   }
 
   componentDidMount() {
-    const url = this.endpoint + "/" + this.props.plugId;
+    const url = this.endpoint + "/" + this.props.deviceId;
     fetch(url)
       .then((response) => response.json())
       .then((responseJson) => {
