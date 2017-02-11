@@ -12,22 +12,16 @@ import {
   Text,
   View
 } from 'react-native';
+import Header from './src/components/header';
 import SwitchCollection from './src/components/switchCollection';
 
 export default class HomeDashboard extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+        <View style={{flexDirection: 'row', paddingBottom: 20}}>
+          <Header />
+        </View>
         <View style={{flex: 1, flexDirection: 'row'}}>
           <SwitchCollection />
         </View>
