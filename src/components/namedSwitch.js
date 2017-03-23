@@ -7,7 +7,7 @@ export default class NamedSwitch extends Component {
     this.state = {
       on: false,
     };
-    const baseUrl = 'http://192.168.0.186:8080/api';
+    const baseUrl = this.props.api;
     if (this.props.type && this.props.type.toLowerCase() === 'wemo') {
       this.endpoint = baseUrl + '/wemo';
     } else if (this.props.type && this.props.type.toLowerCase() === 'garage') {
