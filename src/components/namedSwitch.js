@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Switch, StyleSheet } from 'react-native';
+import ReactMixin from 'react-mixin';
+import TimerMixin from 'react-timer-mixin';
 import config from '../config/config';
 
 export default class NamedSwitch extends Component {
@@ -27,7 +29,7 @@ export default class NamedSwitch extends Component {
       .then((responseJson) => {
         this.setState({on: !this.state.on});
         if (this.props.type && this.props.type.toLowerCase() === 'garage') {
-          setTimeout(() => {this.setState({disabled: false})}, config.garageWaitTime);
+          this.setTimeout(() => {this.setState({disabled: false})}, config.garageWaitTime);
         } else {
           this.setState({disabled: false});
         }
@@ -84,3 +86,5 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
 });
+
+ReactMixin(NamedSwitch.prototype, TimerMixin);
