@@ -31,7 +31,6 @@ export default class SwitchCollection extends Component {
         <NamedSwitch name='Family Room' deviceId={0} api={this.state.api} />
         <NamedSwitch name='Living Room Lamp' deviceId={1} api={this.state.api} />
         <NamedSwitch name='Family Room Lamp 2' deviceId={2} api={this.state.api} />
-        <NamedSwitch name='Dining Room Lamp' deviceId={3} api={this.state.api} />
         <NamedSwitch name='Cabinet' deviceId={4} api={this.state.api} />
         <NamedSwitch name='Bedroom Lamp' deviceId={5} api={this.state.api} />
         <NamedSwitch name='Dining Room Table' deviceId={0} type='wemo' api={this.state.api} />
