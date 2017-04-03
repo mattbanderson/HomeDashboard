@@ -40,7 +40,7 @@ export default class NamedSwitch extends Component {
       });
   }
 
-  componentDidMount() {
+  fetchStatus() {
     const url = this.endpoint + "/" + this.props.deviceId;
     fetch(url)
       .then((response) => response.json())
@@ -50,6 +50,11 @@ export default class NamedSwitch extends Component {
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  componentDidMount() {
+    this.fetchStatus();
+    this.setInterval(this.fetchStatus, config.statusCheckInterval);
   }
 
   render() {
