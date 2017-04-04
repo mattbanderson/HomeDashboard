@@ -45,7 +45,11 @@ export default class NamedSwitch extends Component {
     fetch(url)
       .then((response) => response.json())
       .then((responseJson) => {
-        this.setState({on: responseJson === "ON"});
+        if (this.props.type && this.props.type.toLowerCase() === 'garage') {
+          this.setState({on: responseJson === 1});
+        } else {
+          this.setState({on: responseJson === "ON"});
+        }
       })
       .catch((error) => {
         console.error(error);
