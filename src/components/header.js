@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { StyleSheet, Switch, Text, View } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class Header extends Component {
   render() {
     return (
         <View style={styles.header}>
-          <Text style={styles.title}>Home Dash</Text>
+          <Text style={styles.title}>Home Controls</Text>
+          <Icon.Button name="refresh" color="black" backgroundColor="lightblue" onPress={this.props.onRefresh} ></Icon.Button>
         </View>
       );
   }
@@ -23,7 +25,8 @@ var styles = StyleSheet.create({
       flex: 1,
       textAlign: 'center',
     },
-    settings: {
+    refresh: {
       textAlign: 'right',
+      color: 'lightblue',
     }
 });

@@ -14,10 +14,10 @@ export default class HomeDashboard extends Component {
     return (
       <View style={styles.container}>
         <View style={{flexDirection: 'row', paddingBottom: 20}}>
-          <Header />
+          <Header onRefresh={() => this.switches.getEndpoint() } />
         </View>
         <View style={{flex: 1, flexDirection: 'row'}}>
-          <SwitchCollection />
+          <SwitchCollection ref={switches => { this.switches = switches }} />
         </View>
       </View>
     );

@@ -12,7 +12,7 @@ export default class SwitchCollection extends Component {
     };
   }
 
-  componentDidMount() {
+  getEndpoint() {
     fetch(this.state.api + "/ping")
       .then((response) => response.json())
       .then((responseJson) => {
@@ -23,6 +23,10 @@ export default class SwitchCollection extends Component {
       .catch((error) => {
         console.error(error);
       });
+  }
+
+  componentDidMount() {
+    this.getEndpoint();
   }
 
   render() {
