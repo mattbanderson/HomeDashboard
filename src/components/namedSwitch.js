@@ -36,6 +36,7 @@ export default class NamedSwitch extends Component {
       })
       .catch((error) => {
         console.error(error);
+        this.props.onError(error);
         this.setState({disabled: false})
       });
   }
@@ -53,6 +54,7 @@ export default class NamedSwitch extends Component {
       })
       .catch((error) => {
         console.error(error);
+        this.props.onError(error);
       });
   }
 
