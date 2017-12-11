@@ -54,7 +54,7 @@ export default class NamedSwitch extends Component {
       })
       .catch((error) => {
         console.error(error);
-        this.props.onError(error);
+        throw error;
       });
   }
 
