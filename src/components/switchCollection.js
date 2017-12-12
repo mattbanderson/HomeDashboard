@@ -12,9 +12,16 @@ export default class SwitchCollection extends Component {
     };
   }
 
+  handleErrors(response) {
+    if (!response.ok) {
+      throw Error('Unable to connect. Are you on home WiFi?');
+    }
+    return response.json();
+  }
+
   getEndpoint() {
     fetch(this.state.api + "/ping")
-      .then((response) => response.json())
+      .then(this.handleErrors)
       .then((responseJson) => {
         if (responseJson.toLowerCase() !== "pong") {
           this.setState({api: config.externalApi});
@@ -22,7 +29,7 @@ export default class SwitchCollection extends Component {
       })
       .catch((error) => {
         console.error(error);
-        this.props.onError(error);
+        this.props.onError(error.message);
       });
   }
 

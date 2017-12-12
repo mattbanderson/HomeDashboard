@@ -21,11 +21,29 @@ export default class NamedSwitch extends Component {
     }
   }
 
+  handleErrors(name, response) {
+    if (!response.ok) {
+      let errMsg = '';
+      switch(response.status) {
+        case 404:
+            errMsg = name + ' not found.';
+            break;
+        case 500:
+            errMsg = 'An unexpected error occurred.';
+            break;
+        default:
+            errMsg = 'An unknown error occurred.';
+      }
+      throw Error(errMsg);
+    }
+    return response.json();
+  }
+
   flip() {
     this.setState({disabled: true});
     const url = this.endpoint + '/' + this.props.deviceId;
     fetch(url, { method: 'POST' })
-      .then((response) => response.json())
+      .then(this.handleErrors.bind(null, this.props.name))
       .then((responseJson) => {
         this.setState({on: !this.state.on});
         if (this.props.type && this.props.type.toLowerCase() === 'garage') {
@@ -35,8 +53,8 @@ export default class NamedSwitch extends Component {
         }
       })
       .catch((error) => {
-        console.error(error);
-        this.props.onError(error);
+        console.log(error);
+        this.props.onError(error.message);
         this.setState({disabled: false})
       });
   }
@@ -53,8 +71,8 @@ export default class NamedSwitch extends Component {
         }
       })
       .catch((error) => {
-        console.error(error);
-        throw error;
+        console.log(error);
+        this.props.onError(error.message);
       });
   }
 

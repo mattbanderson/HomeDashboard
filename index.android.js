@@ -5,7 +5,9 @@ import {
   Navigator,
   Text,
   View,
-  Modal, TouchableHighlight
+  Modal,
+  Button,
+  TouchableHighlight
 } from 'react-native';
 import Header from './src/components/header';
 import SwitchCollection from './src/components/switchCollection';
@@ -16,9 +18,8 @@ export default class HomeDashboard extends Component {
     modalMessage: ''
   }
 
-  handleError(error) {
-    console.log(error);
-    this.setState({modalVisible: true, modalMessage: error});
+  handleError(msg) {
+    this.setState({modalVisible: true, modalMessage: msg});
   }
 
   render() {
@@ -43,16 +44,10 @@ export default class HomeDashboard extends Component {
             onRequestClose={() => this.setState({modalVisible: false}) }
             >
            <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-between'}}>
-            <View style={{marginTop: 50}}>
-              <Text style={{height: 100}}>{this.state.modalMessage}</Text>
-
-              <TouchableHighlight style={{height: 100}} onPress={() => {
-                this.setState({modalVisible: false});
-              }}>
-                <Text>Dismiss</Text>
-              </TouchableHighlight>
-
-            </View>
+              <View style={{flex: 1, flexDirection: 'column', alignItems: 'center', justifyContent: 'space-around'}}>
+                <Text style={{fontSize: 16}}>{this.state.modalMessage}</Text>
+                <Button title='Dismiss' color='lightblue' onPress={() => this.setState({modalVisible: false})}>Dismiss</Button>
+              </View>
            </View>
           </Modal>
         </View>
