@@ -28,7 +28,7 @@ export default class SwitchCollection extends Component {
         }
       })
       .catch((error) => {
-        console.error(error);
+        console.log(error);
         this.props.onError(error.message);
       });
   }
