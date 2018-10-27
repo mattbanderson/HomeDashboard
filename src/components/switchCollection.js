@@ -9,6 +9,7 @@ export default class SwitchCollection extends Component {
 
     this.state = {
       api: config.internalApi,
+      devices: []
     };
   }
 
@@ -19,22 +20,7 @@ export default class SwitchCollection extends Component {
     return response.json();
   }
 
-  getEndpoint() {
-    fetch(this.state.api + "/ping")
-      .then(this.handleErrors)
-      .then((responseJson) => {
-        if (responseJson.toLowerCase() !== "pong") {
-          this.setState({api: config.externalApi});
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        this.props.onError(error.message);
-      });
-  }
-
   componentDidMount() {
-    this.getEndpoint();
   }
 
   render() {

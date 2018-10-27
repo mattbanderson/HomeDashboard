@@ -12,7 +12,7 @@ import {
 import Header from './src/components/header';
 import SwitchCollection from './src/components/switchCollection';
 
-export default class HomeDashboard extends Component {
+export default class App extends React.Component {
   state = {
     modalVisible: false,
     modalMessage: ''
@@ -34,8 +34,6 @@ export default class HomeDashboard extends Component {
             onError={error => this.handleError(error)}
           />
         </View>
-
-
         <View>
           <Modal
             animationType={"fade"}
@@ -51,8 +49,6 @@ export default class HomeDashboard extends Component {
            </View>
           </Modal>
         </View>
-
-
       </View>
     );
   }
@@ -76,5 +72,3 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
-AppRegistry.registerComponent('HomeDashboard', () => HomeDashboard);

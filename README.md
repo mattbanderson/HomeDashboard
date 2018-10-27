@@ -4,20 +4,14 @@ An Android App for controlling home WiFi-connected sensors, switches, cameras, e
 
 # Development
 
-To run locally using emulator:
+Install [Expo](https://docs.expo.io/versions/latest/) globally: `npm install -g expo-cli` and download the Expo mobile app.
 
-Open Android Studio and launch emulator from Tools -> Android -> AVD Manager
-
-```sh
-react-native run-android
+Run `expo start`, and open the app on a test device and scan the QR code to test this app on the device.
 ```
 
 # Build & Deploy
 
-Run the script from the root of the project:
-```sh
-./deploy/deploy.sh
-```
+TBD
 
 ## License
 MIT
