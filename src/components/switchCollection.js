@@ -20,20 +20,32 @@ export default class SwitchCollection extends Component {
     return response.json();
   }
 
+  getDevices() {
+    fetch(this.state.api + "/api/devices")
+      .then(this.handleErrors)
+      .then((responseJson) => {
+        this.setState({devices: responseJson});
+      })
+      .catch((error) => {
+        console.log(error);
+        this.props.onError(error.message);
+      });
+  }
+
   componentDidMount() {
+    this.getDevices();
   }
 
   render() {
     return (
       <View style={{flex: 1}}>
-        <NamedSwitch name='Family Room' deviceId={0} api={this.state.api} />
-        <NamedSwitch name='Living Room Lamp' deviceId={1} api={this.state.api} />
-        <NamedSwitch name='Family Room Lamp 2' deviceId={2} api={this.state.api} />
-        <NamedSwitch name='Christmas Tree' deviceId={3} api={this.state.api} />
-        <NamedSwitch name='Cabinet' deviceId={4} api={this.state.api} />
-        <NamedSwitch name='Bedroom Lamp' deviceId={5} api={this.state.api} />
-        <NamedSwitch name='Dining Room Table' deviceId={0} type='wemo' api={this.state.api} />
-        <NamedSwitch name='Garage Door' deviceId={1} type='garage' api={this.state.api} />
+        { this.state.devices.map(d =>
+          <NamedSwitch
+            key={d.name}
+            name={d.name}
+            type={d.type}
+            endpoint={this.state.api + d.route}
+          />) }
       </View>
     );
   }

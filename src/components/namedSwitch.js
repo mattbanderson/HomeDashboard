@@ -11,14 +11,6 @@ export default class NamedSwitch extends Component {
       on: false,
       disabled: false
     };
-    const baseUrl = this.props.api;
-    if (this.props.type && this.props.type.toLowerCase() === 'wemo') {
-      this.endpoint = baseUrl + '/wemo';
-    } else if (this.props.type && this.props.type.toLowerCase() === 'garage') {
-      this.endpoint = baseUrl + '/garage/door';
-    } else {
-      this.endpoint = baseUrl + '/ecoplug';
-    }
   }
 
   handleErrors(name, response) {
@@ -41,7 +33,7 @@ export default class NamedSwitch extends Component {
 
   flip() {
     this.setState({disabled: true});
-    const url = this.endpoint + '/' + this.props.deviceId;
+    const url = this.props.endpoint;
     fetch(url, { method: 'POST' })
       .then(this.handleErrors.bind(null, this.props.name))
       .then((responseJson) => {
@@ -60,7 +52,7 @@ export default class NamedSwitch extends Component {
   }
 
   fetchStatus() {
-    const url = this.endpoint + "/" + this.props.deviceId;
+    const url = this.props.endpoint;
     fetch(url)
       .then((response) => response.json())
       .then((responseJson) => {
