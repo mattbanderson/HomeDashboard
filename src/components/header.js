@@ -16,7 +16,8 @@ var styles = StyleSheet.create({
     header: {
         backgroundColor: 'lightblue',
         alignItems: 'center',
-        padding: 10 ,
+        paddingTop: 35,
+        paddingBottom: 15,
         flex: 1,
         flexDirection: 'row',
     },
