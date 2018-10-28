@@ -20,8 +20,12 @@
     "assetBundlePatterns": [
       "**/*"
     ],
+    "android": {
+      "package": "com.mattbanderson.homedashboard"
+    },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mattbanderson.homedashboard"
     }
   }
 }
