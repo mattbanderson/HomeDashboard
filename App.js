@@ -26,7 +26,7 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View style={{flexDirection: 'row', paddingBottom: 20}}>
-          <Header onRefresh={() => this.switches.getEndpoint() } />
+          <Header />
         </View>
         <View style={{flex: 1, flexDirection: 'row'}}>
           <SwitchCollection

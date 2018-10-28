@@ -7,7 +7,6 @@ export default class Header extends Component {
     return (
         <View style={styles.header}>
           <Text style={styles.title}>Home Controls</Text>
-          <Icon.Button name="refresh" color="black" backgroundColor="lightblue" onPress={this.props.onRefresh} ></Icon.Button>
         </View>
       );
   }
