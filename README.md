@@ -1,4 +1,4 @@
-# Home Dashboard Android App
+# Home Control Android App
 
 An Android App for controlling home WiFi-connected sensors, switches, cameras, etc.
 
