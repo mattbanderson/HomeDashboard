@@ -15,7 +15,12 @@ import SwitchCollection from './src/components/switchCollection';
 export default class App extends React.Component {
   state = {
     modalVisible: false,
-    modalMessage: ''
+    modalMessage: '',
+    location: 'Home'
+  }
+
+  handleLocationChange() {
+    this.setState({location: this.state.location === 'Home' ? 'Away' : 'Home'});
   }
 
   handleError(msg) {
@@ -26,11 +31,15 @@ export default class App extends React.Component {
     return (
       <View style={styles.container}>
         <View style={{flexDirection: 'row', paddingBottom: 20}}>
-          <Header />
+          <Header
+            location={this.state.location}
+            onLocationChange={() => this.handleLocationChange()}
+          />
         </View>
         <View style={{flex: 1, flexDirection: 'row'}}>
           <SwitchCollection
             ref={switches => { this.switches = switches }}
+            location={this.state.location}
             onError={error => this.handleError(error)}
           />
         </View>

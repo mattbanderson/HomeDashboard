@@ -20,8 +20,8 @@ export default class SwitchCollection extends Component {
     return response.json();
   }
 
-  getDevices() {
-    fetch(this.state.api + "/api/devices")
+  getDevices(url) {
+    fetch(url)
       .then(this.handleErrors)
       .then((responseJson) => {
         this.setState({devices: responseJson});
@@ -33,7 +33,13 @@ export default class SwitchCollection extends Component {
   }
 
   componentDidMount() {
-    this.getDevices();
+    this.getDevices(this.state.api + '/api/devices');
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.location !== this.props.location) {
+      this.setState({api: nextProps.location === 'Home' ? config.internalApi : config.externalApi});
+    }
   }
 
   render() {
@@ -45,6 +51,7 @@ export default class SwitchCollection extends Component {
             name={d.name}
             type={d.type}
             endpoint={this.state.api + d.route}
+            onError={this.props.onError}
           />) }
       </View>
     );
