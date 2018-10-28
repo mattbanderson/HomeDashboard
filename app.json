@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "HomeDashboard",
+    "name": "Home Control",
     "description": "An app for controlling IoT devices at home.",
-    "slug": "HomeDashboard",
+    "slug": "home-control",
     "privacy": "public",
     "sdkVersion": "30.0.0",
     "platforms": ["ios", "android"],
@@ -21,11 +21,11 @@
       "**/*"
     ],
     "android": {
-      "package": "com.mattbanderson.homedashboard"
+      "package": "com.mattbanderson.homecontrol"
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.mattbanderson.homedashboard"
+      "bundleIdentifier": "com.mattbanderson.homecontrol"
     }
   }
 }
