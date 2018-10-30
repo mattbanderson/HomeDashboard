@@ -16,11 +16,16 @@ export default class App extends React.Component {
   state = {
     modalVisible: false,
     modalMessage: '',
-    location: 'Home'
+    location: 'Home',
+    showApi: false
   }
 
   handleLocationChange() {
     this.setState({location: this.state.location === 'Home' ? 'Away' : 'Home'});
+  }
+
+  handleInfoPress() {
+    this.setState({showApi: !this.state.showApi});
   }
 
   handleError(msg) {
@@ -34,6 +39,7 @@ export default class App extends React.Component {
           <Header
             location={this.state.location}
             onLocationChange={() => this.handleLocationChange()}
+            onInfoPress={() => this.handleInfoPress()}
           />
         </View>
         <View style={{flex: 1, flexDirection: 'row'}}>
@@ -41,6 +47,7 @@ export default class App extends React.Component {
             ref={switches => { this.switches = switches }}
             location={this.state.location}
             onError={error => this.handleError(error)}
+            showApi={this.state.showApi}
           />
         </View>
         <View>

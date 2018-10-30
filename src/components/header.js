@@ -6,6 +6,7 @@ export default class Header extends Component {
   render() {
     return (
         <View style={styles.header}>
+          <Icon.Button name="info-circle" color="black" backgroundColor="lightblue" onPress={this.props.onInfoPress} ></Icon.Button>
           <Text style={styles.title}>Home Control</Text>
           <Button
             onPress={() => this.props.onLocationChange()}

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import NamedSwitch from './namedSwitch';
 import config from '../config/config';
 
@@ -38,21 +38,34 @@ export default class SwitchCollection extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.location !== this.props.location) {
-      this.setState({api: nextProps.location === 'Home' ? config.internalApi : config.externalApi});
+      const nextApi = nextProps.location === 'Home' ? config.internalApi : config.externalApi
+      this.setState({api: nextApi});
+      this.getDevices(nextApi + '/api/devices');
     }
   }
 
   render() {
+    let apiText;
+    if (this.props.showApi) {
+      apiText = (
+        <Text style={{textAlign: 'center'}}>
+          {this.state.api}
+        </Text>
+      )
+    }
     return (
       <View style={{flex: 1}}>
-        { this.state.devices.map(d =>
-          <NamedSwitch
-            key={d.name}
-            name={d.name}
-            type={d.type}
-            endpoint={this.state.api + d.route}
-            onError={this.props.onError}
-          />) }
+        {
+          this.state.devices.map(d =>
+            <NamedSwitch
+              key={d.name}
+              name={d.name}
+              type={d.type}
+              endpoint={this.state.api + d.route}
+              onError={this.props.onError}
+            />)
+        }
+        {apiText}
       </View>
     );
   }
