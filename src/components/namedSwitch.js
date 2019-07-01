@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, Switch, StyleSheet } from 'react-native';
-import ReactMixin from 'react-mixin';
-import TimerMixin from 'react-timer-mixin';
 import config from '../config/config';
 
 export default class NamedSwitch extends Component {
@@ -70,7 +68,6 @@ export default class NamedSwitch extends Component {
 
   componentDidMount() {
     this.fetchStatus();
-    this.setInterval(this.fetchStatus, config.statusCheckInterval);
   }
 
   render() {
@@ -107,5 +104,3 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
 });
-
-ReactMixin(NamedSwitch.prototype, TimerMixin);
