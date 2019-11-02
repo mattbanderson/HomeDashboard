@@ -36,11 +36,7 @@ export default class NamedSwitch extends Component {
       .then(this.handleErrors.bind(null, this.props.name))
       .then((responseJson) => {
         this.setState({on: !this.state.on});
-        if (this.props.type && this.props.type.toLowerCase() === 'garage') {
-          this.setTimeout(() => {this.setState({disabled: false})}, config.garageWaitTime);
-        } else {
-          this.setState({disabled: false});
-        }
+        this.setState({disabled: false});
       })
       .catch((error) => {
         console.log(error);
