@@ -36,7 +36,7 @@ export default class SwitchCollection extends Component {
     this.getDevices(this.state.api + '/api/devices');
   }
 
-  componentWillReceiveProps(nextProps) {
+  componentDidUpdate(nextProps) {
     if (nextProps.location !== this.props.location) {
       const nextApi = nextProps.location === 'Home' ? config.internalApi : config.externalApi
       this.setState({api: nextApi});
