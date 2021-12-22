@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { View, Text, Switch, StyleSheet } from 'react-native';
-import config from '../config/config';
 
 export default class NamedSwitch extends Component {
   constructor(props) {
@@ -57,8 +56,9 @@ export default class NamedSwitch extends Component {
         }
       })
       .catch((error) => {
-        console.log(error);
-        this.props.onError(error.message);
+        const errMsg = error.message + ": " + this.props.name
+        console.log(errMsg);
+        this.props.onError(errMsg);
       });
   }
 
@@ -77,7 +77,7 @@ export default class NamedSwitch extends Component {
         </View>
         <View style={styles.switchBtn}>
           <Switch
-            onValueChange={value => this.flip()}
+            onValueChange={(value) => this.flip()}
             value={this.state.on}
             disabled={this.state.disabled}
           />
@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
     flex: 4
   },
   switchBtn: {
-    flex: 2,
-    marginBottom: 15
+    flex: 2
   },
 });

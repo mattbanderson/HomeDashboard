@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import NamedSwitch from './namedSwitch';
 import config from '../config/config';
 
@@ -9,7 +9,8 @@ export default class SwitchCollection extends Component {
 
     this.state = {
       api: config.internalApi,
-      devices: []
+      devices: [],
+      refreshKey: 0
     };
   }
 
@@ -30,6 +31,10 @@ export default class SwitchCollection extends Component {
         console.log(error);
         this.props.onError(error.message);
       });
+  }
+
+  refresh() {
+    this.setState({refreshKey:  this.state.refreshKey + 1});
   }
 
   componentDidMount() {
@@ -54,19 +59,35 @@ export default class SwitchCollection extends Component {
       )
     }
     return (
-      <View style={{flex: 1}}>
+      <View style={styles.margin}>
         {
           this.state.devices.map(d =>
             <NamedSwitch
-              key={d.name}
+              key={d.name + this.state.refreshKey}
               name={d.name}
               type={d.type}
               endpoint={this.state.api + d.route}
               onError={this.props.onError}
             />)
         }
+        <View style={styles.refresh}>
+          <Button 
+            onPress={this.refresh.bind(this)}
+            title='Refresh'
+          />
+        </View>
         {apiText}
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  margin: {
+    flex: 1
+  },
+  refresh: {
+    paddingTop: 10,
+    paddingBottom: 10
+  },
+});
