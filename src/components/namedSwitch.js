@@ -33,7 +33,7 @@ export default class NamedSwitch extends Component {
     const url = this.props.endpoint;
     fetch(url, { method: 'POST' })
       .then(this.handleErrors.bind(null, this.props.name))
-      .then((responseJson) => {
+      .then(() => {
         this.setState({on: !this.state.on});
         this.setState({disabled: false});
       })
@@ -77,7 +77,7 @@ export default class NamedSwitch extends Component {
         </View>
         <View style={styles.switchBtn}>
           <Switch
-            onValueChange={(value) => this.flip()}
+            onValueChange={() => this.flip()}
             value={this.state.on}
             disabled={this.state.disabled}
           />
