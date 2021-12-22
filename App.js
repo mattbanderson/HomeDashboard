@@ -17,7 +17,7 @@ export default class App extends React.Component {
     modalVisible: false,
     modalMessage: '',
     location: 'Home',
-    showApi: false
+    showInfo: false
   }
 
   handleLocationChange() {
@@ -25,7 +25,7 @@ export default class App extends React.Component {
   }
 
   handleInfoPress() {
-    this.setState({showApi: !this.state.showApi});
+    this.setState({showInfo: !this.state.showInfo});
   }
 
   handleError(msg) {
@@ -47,7 +47,7 @@ export default class App extends React.Component {
             ref={switches => { this.switches = switches }}
             location={this.state.location}
             onError={error => this.handleError(error)}
-            showApi={this.state.showApi}
+            showInfo={this.state.showInfo}
           />
         </View>
         <View>

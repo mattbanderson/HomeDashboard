@@ -10,7 +10,8 @@ export default class SwitchCollection extends Component {
     this.state = {
       api: config.internalApi,
       devices: [],
-      refreshKey: 0
+      refreshKey: 0,
+      version: config.version
     };
   }
 
@@ -50,12 +51,17 @@ export default class SwitchCollection extends Component {
   }
 
   render() {
-    let apiText;
-    if (this.props.showApi) {
-      apiText = (
-        <Text style={{textAlign: 'center'}}>
-          {this.state.api}
-        </Text>
+    let info;
+    if (this.props.showInfo) {
+      info = (
+        <View>
+          <Text style={{textAlign: 'center'}}>
+            API endpoint: {this.state.api}
+          </Text>
+          <Text style={{textAlign: 'center'}}>
+            Version: {this.state.version}
+          </Text>
+        </View>
       )
     }
     return (
@@ -76,7 +82,7 @@ export default class SwitchCollection extends Component {
             title='Refresh'
           />
         </View>
-        {apiText}
+        {info}
       </View>
     );
   }
