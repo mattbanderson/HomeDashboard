@@ -17,12 +17,11 @@ module.exports = {
 EOF
 ```
 
-
 Run `expo start`, and open the app on a test device and scan the QR code to test this app on the device.
 
 # Build & Deploy
 
-Run `expo build:android`.
+Run `eas build -p android`.
 
 ## License
 
