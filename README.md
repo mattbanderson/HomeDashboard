@@ -19,6 +19,8 @@ EOF
 
 Run `expo start`, and open the app on a test device and scan the QR code to test this app on the device.
 
+**NOTE:** There are some differences in padding in the Expo emulator compared the to app installed via the built .apk file.
+
 # Build & Deploy
 
 Run `eas build -p android`.
