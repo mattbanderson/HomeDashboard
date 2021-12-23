@@ -4,8 +4,6 @@ An Android App for controlling home WiFi-connected sensors, switches, cameras, e
 
 # Development
 
- 
-
 Install [Expo](https://docs.expo.io/versions/latest/) globally: `npm install -g expo-cli` and download the Expo mobile app.
 
 Run the following command, replacing the internal and external API host variables as appropriate.
@@ -27,4 +25,5 @@ Run `expo start`, and open the app on a test device and scan the QR code to test
 Run `expo build:android`.
 
 ## License
+
 MIT
