@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
     flex: 4
   },
   switchBtn: {
-    flex: 2
+    flex: 2,
+    marginBottom: 15
   },
 });

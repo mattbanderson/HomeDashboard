@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import {
-  AppRegistry,
   StyleSheet,
-  Navigator,
   Text,
   View,
   Modal,
-  Button,
-  TouchableHighlight
+  Button
 } from 'react-native';
 import Header from './src/components/header';
 import SwitchCollection from './src/components/switchCollection';
